@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PagodaPad · Launch tokens paired with Chinese stocks</title>
+<style>
+:root{--bg1:#07140f;--bg2:#0d1b3a;--txt:#eafff5;--mut:#9bb8ab;--glass:rgba(255,255,255,.07);--bd:rgba(255,255,255,.18);--acc:#ccff00;--shadow:rgba(0,0,0,.35);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg1:#e9fff3;--bg2:#dfe8ff;--txt:#0b2a1c;--mut:#4b6a5b;--glass:rgba(255,255,255,.5);--bd:rgba(255,255,255,.85);--shadow:rgba(30,60,50,.15);color-scheme:light}}
+:root[data-theme="dark"]{color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--txt);background:linear-gradient(135deg,var(--bg1),var(--bg2));background-attachment:fixed;overflow-x:hidden;line-height:1.55}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
+.o1{width:420px;height:420px;background:#ccff00;top:-120px;left:-100px;opacity:.33}
+.o2{width:480px;height:480px;background:#ff3b5c;bottom:-160px;right:-120px;opacity:.3}
+.o3{width:340px;height:340px;background:#3b82ff;top:45%;left:50%;opacity:.28}
+.glass{background:var(--glass);border:1px solid var(--bd);border-radius:22px;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:0 10px 40px var(--shadow),inset 0 1px 0 rgba(255,255,255,.25)}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 18px}
+nav{position:sticky;top:12px;z-index:5;margin-top:14px;display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+.logo{font-weight:800}.logo b{color:var(--acc)}
+nav .links{display:flex;gap:18px;align-items:center;font-size:14px}
+nav a{color:var(--mut);text-decoration:none}nav a:hover{color:var(--txt)}
+.btn{display:inline-block;padding:12px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid var(--bd);color:var(--txt);background:var(--glass)}
+.btn.pri{background:linear-gradient(135deg,var(--acc),#7dff9a);color:#0a1a0f;border:0}
+.btn:hover{filter:brightness(1.1)}
+@media(max-width:640px){nav .links a.h{display:none}}
+header.hero{text-align:center;padding:80px 0 60px}
+.pill{display:inline-block;padding:6px 14px;border-radius:999px;font-size:13px;color:var(--mut);margin-bottom:20px}
+h1{font-size:clamp(34px,7vw,66px);line-height:1.04;letter-spacing:-1.5px;margin:0 0 18px}
+h1 span{background:linear-gradient(90deg,var(--acc),#7dff9a,#6ab7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:18px;max-width:640px;margin:0 auto 28px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ticker{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.tk{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700}
+section{padding:54px 0}
+h2{font-size:clamp(26px,4vw,38px);margin:0 0 8px;letter-spacing:-.5px}
+.sec-sub{color:var(--mut);margin:0 0 28px;max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{padding:22px}
+.card h3{margin:10px 0 6px;font-size:18px}.card p{margin:0;color:var(--mut);font-size:15px}
+.num{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--acc);color:#0a1a0f;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.mock{padding:22px}
+.mrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bd);font-size:14px}
+.mrow:last-child{border:0}.up{color:#5dffa0}.dn{color:#ff5c7a}
+.bar{display:grid;grid-template-columns:54px 1fr 64px;gap:10px;align-items:center;font-size:13px;margin:10px 0}
+.track{height:12px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--acc),#6ab7ff)}
+.road{display:grid;gap:14px}
+.step{padding:18px 22px;display:flex;gap:16px;align-items:center}
+.tag{font-size:12px;padding:4px 10px;border-radius:99px;border:1px solid var(--bd);color:var(--mut);white-space:nowrap}
+.tag.now{background:var(--acc);color:#0a1a0f;border:0;font-weight:700}
+details{padding:16px 22px;margin-bottom:12px;cursor:pointer}
+summary{font-weight:700}details p{color:var(--mut);margin:10px 0 0}
+.final{text-align:center;padding:44px 22px;margin:20px 0 40px}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:10px 0 40px}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<div class="wrap">
+  <nav class="glass">
+    <div class="logo">Pagoda<b>Pad</b></div>
+    <div class="links"><a class="h" href="#how">How it works</a><a class="h" href="#why">Why</a><a class="h" href="#roadmap">Roadmap</a><a class="btn pri" href="https://claude.ai/artifact/K82r4PVXFT7Bs72wBg5qbs" target="_blank" rel="noopener">Launch app</a></div>
+  </nav>
+
+  <header class="hero">
+    <span class="pill glass">Built for Robinhood Chain · Arbitrum L2 · Gas in ETH</span>
+    <h1>Launch tokens.<br><span>Pair volume with Chinese stocks.</span></h1>
+    <p class="lead">PagodaPad is a token launchpad where every new launch trades against a tokenized China-listed stock, so volume flows into the pairs traders already care about.</p>
+    <div class="cta">
+      <a class="btn pri" href="https://claude.ai/artifact/K82r4PVXFT7Bs72wBg5qbs" target="_blank" rel="noopener">Open the launchpad</a>
+      <a class="btn" href="#how">See how it works</a>
+    </div>
+    <div class="ticker">
+      <span class="tk glass">BABA</span><span class="tk glass">PDD</span><span class="tk glass">JD</span><span class="tk glass">BIDU</span><span class="tk glass">NIO</span><span class="tk glass">XPEV</span><span class="tk glass">LI</span><span class="tk glass">TME</span>
+    </div>
+  </header>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="sec-sub">From idea to a live trading pair in four steps.</p>
+    <div class="cards">
+      <div class="glass card"><div class="num">1</div><h3>Connect</h3><p>Link MetaMask or Rabby. The site adds Robinhood Chain for you.</p></div>
+      <div class="glass card"><div class="num">2</div><h3>Create</h3><p>Choose a token name, symbol and supply.</p></div>
+      <div class="glass card"><div class="num">3</div><h3>Pair</h3><p>Pick a Chinese stock to trade against and add ETH as seed liquidity.</p></div>
+      <div class="glass card"><div class="num">4</div><h3>Trade</h3><p>Your pool goes live and its volume counts toward that stock’s leaderboard.</p></div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="split">
+      <div>
+        <h2>Why pair with stocks?</h2>
+        <p class="sec-sub">Most launches sit in a lonely ETH pool. Pairing with a recognisable equity gives a token a stronger anchor and a ready audience.</p>
+        <div class="cards" style="grid-template-columns:1fr">
+          <div class="glass card"><h3>A credible counterpart</h3><p>A token quoted against BABA or PDD has a clearer reference price than a bare ETH pair.</p></div>
+          <div class="glass card"><h3>Volume you can see</h3><p>Every trade rolls up per stock, so you can tell which pairs attract real activity.</p></div>
+        </div>
+      </div>
+      <div class="glass mock">
+        <strong>Volume by stock pair</strong>
+        <div class="bar"><b>BABA</b><div class="track"><div class="fill" style="width:100%"></div></div><span>$182K</span></div>
+        <div class="bar"><b>PDD</b><div class="track"><div class="fill" style="width:66%"></div></div><span>$121K</span></div>
+        <div class="bar"><b>NIO</b><div class="track"><div class="fill" style="width:53%"></div></div><span>$96K</span></div>
+        <div class="bar"><b>BIDU</b><div class="track"><div class="fill" style="width:41%"></div></div><span>$74K</span></div>
+        <div style="margin-top:18px"><strong>Live pools</strong></div>
+        <div class="mrow"><span>DRGN / BABA</span><span class="up">+12.4%</span></div>
+        <div class="mrow"><span>LOTUS / PDD</span><span class="dn">−4.1%</span></div>
+        <div class="mrow"><span>JADE / NIO</span><span class="up">+31.7%</span></div>
+        <small style="color:var(--mut)">Sample data for illustration.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <p class="sec-sub">Where the project stands today.</p>
+    <div class="road">
+      <div class="glass step"><span class="tag now">Now</span><div><b>Interface prototype</b><br><span style="color:var(--mut)">Launch form, pools table, volume leaderboard and wallet connect on Robinhood Chain Testnet.</span></div></div>
+      <div class="glass step"><span class="tag">Next</span><div><b>Factory contracts</b><br><span style="color:var(--mut)">Deploy the token and create the stock pair in one transaction.</span></div></div>
+      <div class="glass step"><span class="tag">Then</span><div><b>Real stock pairs and indexing</b><br><span style="color:var(--mut)">Connect to tokenized stock addresses and track live on-chain volume.</span></div></div>
+      <div class="glass step"><span class="tag">Before mainnet</span><div><b>Security audit</b><br><span style="color:var(--mut)">Independent review of all contracts before any mainnet launch.</span></div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p class="sec-sub">Quick answers.</p>
+    <details class="glass"><summary>Is this live on mainnet?</summary><p>No. Today it is an interface prototype with simulated data. Contracts are not deployed yet.</p></details>
+    <details class="glass"><summary>Which chain does it use?</summary><p>Robinhood Chain, an Ethereum Layer 2 built on Arbitrum. Testnet chain ID is 46630 and mainnet is 4663.</p></details>
+    <details class="glass"><summary>Are the stocks real shares?</summary><p>They would be tokenized representations traded on-chain. Which Chinese stocks are available as tokens on Robinhood Chain still needs to be confirmed.</p></details>
+    <details class="glass"><summary>Is this financial advice?</summary><p>No. Launching and trading tokens is risky, and you can lose everything you put in.</p></details>
+  </section>
+
+  <div class="glass final">
+    <h2>Ready to try it?</h2>
+    <p class="sec-sub" style="margin:0 auto 20px">Open the launchpad prototype and create your first pair.</p>
+    <a class="btn pri" href="https://claude.ai/artifact/K82r4PVXFT7Bs72wBg5qbs" target="_blank" rel="noopener">Open the launchpad</a>
+  </div>
+  <footer>© 2026 PagodaPad · Prototype, not financial advice.</footer>
+</div>
+</body>
+</html>
